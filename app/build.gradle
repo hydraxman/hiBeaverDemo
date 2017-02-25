@@ -24,7 +24,7 @@ android {
     compileSdkVersion 24
     buildToolsVersion "25.0.0"
     defaultConfig {
-        applicationId "bruce.com.testhibeaver"
+        applicationId "com.bryansharp.testhibeaver"
         minSdkVersion 14
         targetSdkVersion 24
         versionCode 1
@@ -45,6 +45,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:24.0.0'
+    compile 'com.squareup.okhttp3:okhttp:3.3.1'
     testCompile 'junit:junit:4.12'
 }
 
@@ -52,13 +53,42 @@ dependencies {
 import com.brucesharpe.gradle.hibeaver.utils.MethodLogAdapter
 import org.objectweb.asm.ClassVisitor
 import org.objectweb.asm.MethodVisitor
+import org.objectweb.asm.Opcodes
 
 hiBeaver {
     watchTimeConsume = true
-    modifyMatchMaps = [['class': 'com.lidroid.xutils.http.ResponseInfo', 'methodName': 'getLastHeader', 'methodDesc': '(Ljava/lang/String;)Lorg/apache/http/Header;', 'adapter': {
-        ClassVisitor cv, int access, String name, String desc, String signature, String[] exceptions ->
-            MethodVisitor methodVisitor = cv.visitMethod(access, name, desc, signature, exceptions);
-            MethodVisitor adapter = new MethodLogAdapter(methodVisitor) {}
-            return adapter;
-    }]]
+    modifyMatchMaps = [
+            'com.xiaomi.mipush.sdk.u': [
+                    ['methodName': 'a', 'methodDesc': '(Lorg/apache/thrift/a;Lcom/xiaomi/xmpush/thrift/a;ZLcom/xiaomi/xmpush/thrift/r;)V', 'adapter': {
+                        ClassVisitor cv, int access, String name, String desc, String signature, String[] exceptions ->
+                            MethodVisitor methodVisitor = cv.visitMethod(access, name, desc, signature, exceptions);
+                            MethodVisitor adapter = new MethodLogAdapter(methodVisitor) {
+                                @Override
+                                void visitCode() {
+                                    super.visitCode();
+                                    methodVisitor.visitVarInsn(Opcodes.ALOAD, 1);
+                                    methodVisitor.visitVarInsn(Opcodes.ALOAD, 2);
+                                    methodVisitor.visitMethodInsn(Opcodes.INVOKESTATIC, "bruce/com/testhibeaver/MainActivity", "hookXM", "(Ljava/lang/Object;Ljava/lang/Object;)V");
+                                }
+                            }
+                            return adapter;
+                    }]
+            ],
+            'okhttp3.internal.http.HttpEngine': [
+                    ['methodName': '<init>', 'methodDesc': null, 'adapter': {
+                        ClassVisitor cv, int access, String name, String desc, String signature, String[] exceptions ->
+                            MethodVisitor methodVisitor = cv.visitMethod(access, name, desc, signature, exceptions);
+                            MethodVisitor adapter = new MethodLogAdapter(methodVisitor) {
+                                @Override
+                                void visitCode() {
+                                    super.visitCode();
+                                    methodVisitor.visitVarInsn(Opcodes.ALOAD, 1);
+                                    methodVisitor.visitVarInsn(Opcodes.ALOAD, 2);
+                                    methodVisitor.visitMethodInsn(Opcodes.INVOKESTATIC, "bruce/com/testhibeaver/MainActivity", "hookXM", "(Ljava/lang/Object;Ljava/lang/Object;)V");
+                                }
+                            }
+                            return adapter;
+                    }]
+            ],
+    ]
 }
