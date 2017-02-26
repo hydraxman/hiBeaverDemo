@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         MiPushClient.registerPush(this, APP_ID, APP_KEY);
         Log.i("hi", "hi");
+        Log.i("hi", "hi");
         try {
             new OkHttpClient.Builder()
                     .build()

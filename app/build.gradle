@@ -7,11 +7,8 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.2'
-//        classpath 'com.github.BryanSharp:hibeaver:1.2.1-SNAPSHOT'
-        classpath 'com.bryansharp:hibeaver:1.2.1-SNAPSHOT'
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+//        classpath 'com.github.BryanSharp:hibeaver:1.2.1-SNAPSHOT' //this is the jitpack version
+        classpath 'com.bryansharp:hibeaver:1.2.1-SNAPSHOT'//this is the local version
     }
 }
 
@@ -19,7 +16,6 @@ repositories {
     jcenter()
 }
 apply plugin: 'com.android.application'
-apply plugin: 'hiBeaver'
 android {
     compileSdkVersion 24
     buildToolsVersion "25.0.0"
@@ -49,16 +45,27 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
-
-import com.brucesharpe.gradle.hibeaver.utils.MethodLogAdapter
+apply plugin: 'hiBeaver'
+import com.bryansharp.gradle.hibeaver.utils.MethodLogAdapter
 import org.objectweb.asm.ClassVisitor
 import org.objectweb.asm.MethodVisitor
 import org.objectweb.asm.Opcodes
-
+//or you can import like bellow:
+//import org.objectweb.asm.*
 hiBeaver {
-    watchTimeConsume = true
+    //this will determine the name of this hibeaver transform, no practical use.
+    hiBeaverModifyName = 'myHibeaverTest'
+    //turn this on to make it print help content, default value is true
+    showHelp = true
+    //this flag will decide whether the log of the modifying process be printed or not, default value is false
+    keepQuiet = false
+    //this is a kit feature of the plugin, set it true to see the time consume of this build
+    watchTimeConsume = false
+
+    //this is the most important part
     modifyMatchMaps = [
             'com.xiaomi.mipush.sdk.u': [
+                    // you can use javap -s command to get the description of one method
                     ['methodName': 'a', 'methodDesc': '(Lorg/apache/thrift/a;Lcom/xiaomi/xmpush/thrift/a;ZLcom/xiaomi/xmpush/thrift/r;)V', 'adapter': {
                         ClassVisitor cv, int access, String name, String desc, String signature, String[] exceptions ->
                             MethodVisitor methodVisitor = cv.visitMethod(access, name, desc, signature, exceptions);
@@ -68,7 +75,7 @@ hiBeaver {
                                     super.visitCode();
                                     methodVisitor.visitVarInsn(Opcodes.ALOAD, 1);
                                     methodVisitor.visitVarInsn(Opcodes.ALOAD, 2);
-                                    methodVisitor.visitMethodInsn(Opcodes.INVOKESTATIC, "bruce/com/testhibeaver/MainActivity", "hookXM", "(Ljava/lang/Object;Ljava/lang/Object;)V");
+                                    methodVisitor.visitMethodInsn(Opcodes.INVOKESTATIC, MethodLogAdapter.className2Path("bruce.com.testhibeaver.MainActivity"), "hookXM", "(Ljava/lang/Object;Ljava/lang/Object;)V");
                                 }
                             }
                             return adapter;
