@@ -1,14 +1,15 @@
 buildscript {
     repositories {
         jcenter()
-        maven {
-            url uri('../../snapshotRepo')
-        }
+        //for local test
+//        maven {
+//            url uri('../../snapshotRepo')
+//        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.2'
-//        classpath 'com.github.BryanSharp:hibeaver:1.2.1-SNAPSHOT' //this is the jitpack version
-        classpath 'com.bryansharp:hibeaver:1.2.1-SNAPSHOT'//this is the local version
+        classpath 'com.bryansharp:HiBeaver:1.2.2' //this is the jitpack version
+//        classpath 'com.bryansharp:hibeaver:1.2.1-SNAPSHOT'//this is the local version
     }
 }
 
