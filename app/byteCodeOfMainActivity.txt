@@ -1,0 +1,330 @@
+Classfile /Users/bsp/Desktop/AndroidStudioProjects/TestHiBeaver/app/build/intermediates/classes/debug/bruce/com/testhibeaver/MainActivity.class
+  Last modified 2017-3-4; size 2671 bytes
+  MD5 checksum 149816c906eb532d324f31d0040f3fc2
+  Compiled from "MainActivity.java"
+public class bruce.com.testhibeaver.MainActivity extends android.support.v7.app.AppCompatActivity
+  minor version: 0
+  major version: 51
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+    #1 = Methodref          #41.#74       // android/support/v7/app/AppCompatActivity."<init>":()V
+    #2 = Methodref          #41.#75       // android/support/v7/app/AppCompatActivity.onCreate:(Landroid/os/Bundle;)V
+    #3 = Class              #77           // bruce/com/testhibeaver/R$layout
+    #4 = Integer            2130968602
+    #5 = Methodref          #40.#79       // bruce/com/testhibeaver/MainActivity.setContentView:(I)V
+    #6 = String             #80           // big guy
+    #7 = Methodref          #40.#81       // bruce/com/testhibeaver/MainActivity.setName:(Ljava/lang/String;)V
+    #8 = String             #82           // hey
+    #9 = String             #83           // hey buddy
+   #10 = Methodref          #84.#85       // android/util/Log.i:(Ljava/lang/String;Ljava/lang/String;)I
+   #11 = Methodref          #40.#86       // bruce/com/testhibeaver/MainActivity.gotoBrowser:()V
+   #12 = Methodref          #40.#87       // bruce/com/testhibeaver/MainActivity.getName:()Ljava/lang/String;
+   #13 = Fieldref           #88.#89       // java/lang/System.out:Ljava/io/PrintStream;
+   #14 = Methodref          #90.#91       // java/io/PrintStream.print:(Ljava/lang/String;)V
+   #15 = String             #92           //
+   #16 = Methodref          #40.#93       // bruce/com/testhibeaver/MainActivity.staticMethod:(Ljava/lang/Object;Ljava/lang/Object;)V
+   #17 = Class              #95           // okhttp3/OkHttpClient$Builder
+   #18 = Methodref          #17.#74       // okhttp3/OkHttpClient$Builder."<init>":()V
+   #19 = Methodref          #17.#97       // okhttp3/OkHttpClient$Builder.build:()Lokhttp3/OkHttpClient;
+   #20 = Class              #99           // okhttp3/Request$Builder
+   #21 = Methodref          #20.#74       // okhttp3/Request$Builder."<init>":()V
+   #22 = String             #100          // http://www.baidu.com
+   #23 = Methodref          #20.#101      // okhttp3/Request$Builder.url:(Ljava/lang/String;)Lokhttp3/Request$Builder;
+   #24 = Methodref          #20.#102      // okhttp3/Request$Builder.build:()Lokhttp3/Request;
+   #25 = Methodref          #94.#103      // okhttp3/OkHttpClient.newCall:(Lokhttp3/Request;)Lokhttp3/Call;
+   #26 = Class              #104          // bruce/com/testhibeaver/MainActivity$1
+   #27 = Methodref          #26.#105      // bruce/com/testhibeaver/MainActivity$1."<init>":(Lbruce/com/testhibeaver/MainActivity;)V
+   #28 = InterfaceMethodref #106.#107     // okhttp3/Call.enqueue:(Lokhttp3/Callback;)V
+   #29 = Class              #108          // java/lang/Exception
+   #30 = Methodref          #29.#109      // java/lang/Exception.printStackTrace:()V
+   #31 = Class              #110          // android/content/Intent
+   #32 = String             #111          // android.intent.action.VIEW
+   #33 = Methodref          #31.#112      // android/content/Intent."<init>":(Ljava/lang/String;)V
+   #34 = Methodref          #113.#114     // android/net/Uri.parse:(Ljava/lang/String;)Landroid/net/Uri;
+   #35 = Methodref          #31.#115      // android/content/Intent.setData:(Landroid/net/Uri;)Landroid/content/Intent;
+   #36 = Methodref          #40.#116      // bruce/com/testhibeaver/MainActivity.startActivity:(Landroid/content/Intent;)V
+   #37 = Fieldref           #40.#117      // bruce/com/testhibeaver/MainActivity.name:Ljava/lang/String;
+   #38 = String             #67           // staticMethod
+   #39 = Methodref          #118.#119     // java/lang/Object.toString:()Ljava/lang/String;
+   #40 = Class              #120          // bruce/com/testhibeaver/MainActivity
+   #41 = Class              #121          // android/support/v7/app/AppCompatActivity
+   #42 = Utf8               InnerClasses
+   #43 = Utf8               name
+   #44 = Utf8               Ljava/lang/String;
+   #45 = Utf8               <init>
+   #46 = Utf8               ()V
+   #47 = Utf8               Code
+   #48 = Utf8               LineNumberTable
+   #49 = Utf8               LocalVariableTable
+   #50 = Utf8               this
+   #51 = Utf8               Lbruce/com/testhibeaver/MainActivity;
+   #52 = Utf8               onCreate
+   #53 = Utf8               (Landroid/os/Bundle;)V
+   #54 = Utf8               e
+   #55 = Utf8               Ljava/lang/Exception;
+   #56 = Utf8               savedInstanceState
+   #57 = Utf8               Landroid/os/Bundle;
+   #58 = Utf8               StackMapTable
+   #59 = Class              #108          // java/lang/Exception
+   #60 = Utf8               gotoBrowser
+   #61 = Utf8               intent
+   #62 = Utf8               Landroid/content/Intent;
+   #63 = Utf8               getName
+   #64 = Utf8               ()Ljava/lang/String;
+   #65 = Utf8               setName
+   #66 = Utf8               (Ljava/lang/String;)V
+   #67 = Utf8               staticMethod
+   #68 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)V
+   #69 = Utf8               checkThisBro
+   #70 = Utf8               Ljava/lang/Object;
+   #71 = Utf8               andThis
+   #72 = Utf8               SourceFile
+   #73 = Utf8               MainActivity.java
+   #74 = NameAndType        #45:#46       // "<init>":()V
+   #75 = NameAndType        #52:#53       // onCreate:(Landroid/os/Bundle;)V
+   #76 = Class              #122          // bruce/com/testhibeaver/R
+   #77 = Utf8               bruce/com/testhibeaver/R$layout
+   #78 = Utf8               layout
+   #79 = NameAndType        #123:#124     // setContentView:(I)V
+   #80 = Utf8               big guy
+   #81 = NameAndType        #65:#66       // setName:(Ljava/lang/String;)V
+   #82 = Utf8               hey
+   #83 = Utf8               hey buddy
+   #84 = Class              #125          // android/util/Log
+   #85 = NameAndType        #126:#127     // i:(Ljava/lang/String;Ljava/lang/String;)I
+   #86 = NameAndType        #60:#46       // gotoBrowser:()V
+   #87 = NameAndType        #63:#64       // getName:()Ljava/lang/String;
+   #88 = Class              #128          // java/lang/System
+   #89 = NameAndType        #129:#130     // out:Ljava/io/PrintStream;
+   #90 = Class              #131          // java/io/PrintStream
+   #91 = NameAndType        #132:#66      // print:(Ljava/lang/String;)V
+   #92 = Utf8
+   #93 = NameAndType        #67:#68       // staticMethod:(Ljava/lang/Object;Ljava/lang/Object;)V
+   #94 = Class              #133          // okhttp3/OkHttpClient
+   #95 = Utf8               okhttp3/OkHttpClient$Builder
+   #96 = Utf8               Builder
+   #97 = NameAndType        #134:#135     // build:()Lokhttp3/OkHttpClient;
+   #98 = Class              #136          // okhttp3/Request
+   #99 = Utf8               okhttp3/Request$Builder
+  #100 = Utf8               http://www.baidu.com
+  #101 = NameAndType        #137:#138     // url:(Ljava/lang/String;)Lokhttp3/Request$Builder;
+  #102 = NameAndType        #134:#139     // build:()Lokhttp3/Request;
+  #103 = NameAndType        #140:#141     // newCall:(Lokhttp3/Request;)Lokhttp3/Call;
+  #104 = Utf8               bruce/com/testhibeaver/MainActivity$1
+  #105 = NameAndType        #45:#142      // "<init>":(Lbruce/com/testhibeaver/MainActivity;)V
+  #106 = Class              #143          // okhttp3/Call
+  #107 = NameAndType        #144:#145     // enqueue:(Lokhttp3/Callback;)V
+  #108 = Utf8               java/lang/Exception
+  #109 = NameAndType        #146:#46      // printStackTrace:()V
+  #110 = Utf8               android/content/Intent
+  #111 = Utf8               android.intent.action.VIEW
+  #112 = NameAndType        #45:#66       // "<init>":(Ljava/lang/String;)V
+  #113 = Class              #147          // android/net/Uri
+  #114 = NameAndType        #148:#149     // parse:(Ljava/lang/String;)Landroid/net/Uri;
+  #115 = NameAndType        #150:#151     // setData:(Landroid/net/Uri;)Landroid/content/Intent;
+  #116 = NameAndType        #152:#153     // startActivity:(Landroid/content/Intent;)V
+  #117 = NameAndType        #43:#44       // name:Ljava/lang/String;
+  #118 = Class              #154          // java/lang/Object
+  #119 = NameAndType        #155:#64      // toString:()Ljava/lang/String;
+  #120 = Utf8               bruce/com/testhibeaver/MainActivity
+  #121 = Utf8               android/support/v7/app/AppCompatActivity
+  #122 = Utf8               bruce/com/testhibeaver/R
+  #123 = Utf8               setContentView
+  #124 = Utf8               (I)V
+  #125 = Utf8               android/util/Log
+  #126 = Utf8               i
+  #127 = Utf8               (Ljava/lang/String;Ljava/lang/String;)I
+  #128 = Utf8               java/lang/System
+  #129 = Utf8               out
+  #130 = Utf8               Ljava/io/PrintStream;
+  #131 = Utf8               java/io/PrintStream
+  #132 = Utf8               print
+  #133 = Utf8               okhttp3/OkHttpClient
+  #134 = Utf8               build
+  #135 = Utf8               ()Lokhttp3/OkHttpClient;
+  #136 = Utf8               okhttp3/Request
+  #137 = Utf8               url
+  #138 = Utf8               (Ljava/lang/String;)Lokhttp3/Request$Builder;
+  #139 = Utf8               ()Lokhttp3/Request;
+  #140 = Utf8               newCall
+  #141 = Utf8               (Lokhttp3/Request;)Lokhttp3/Call;
+  #142 = Utf8               (Lbruce/com/testhibeaver/MainActivity;)V
+  #143 = Utf8               okhttp3/Call
+  #144 = Utf8               enqueue
+  #145 = Utf8               (Lokhttp3/Callback;)V
+  #146 = Utf8               printStackTrace
+  #147 = Utf8               android/net/Uri
+  #148 = Utf8               parse
+  #149 = Utf8               (Ljava/lang/String;)Landroid/net/Uri;
+  #150 = Utf8               setData
+  #151 = Utf8               (Landroid/net/Uri;)Landroid/content/Intent;
+  #152 = Utf8               startActivity
+  #153 = Utf8               (Landroid/content/Intent;)V
+  #154 = Utf8               java/lang/Object
+  #155 = Utf8               toString
+{
+  public bruce.com.testhibeaver.MainActivity();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method android/support/v7/app/AppCompatActivity."<init>":()V
+         4: return
+      LineNumberTable:
+        line 17: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lbruce/com/testhibeaver/MainActivity;
+
+  protected void onCreate(android.os.Bundle);
+    descriptor: (Landroid/os/Bundle;)V
+    flags: ACC_PROTECTED
+    Code:
+      stack=4, locals=3, args_size=2
+         0: aload_0
+         1: aload_1
+         2: invokespecial #2                  // Method android/support/v7/app/AppCompatActivity.onCreate:(Landroid/os/Bundle;)V
+         5: aload_0
+         6: ldc           #4                  // int 2130968602
+         8: invokevirtual #5                  // Method setContentView:(I)V
+        11: aload_0
+        12: ldc           #6                  // String big guy
+        14: invokevirtual #7                  // Method setName:(Ljava/lang/String;)V
+        17: ldc           #8                  // String hey
+        19: ldc           #9                  // String hey buddy
+        21: invokestatic  #10                 // Method android/util/Log.i:(Ljava/lang/String;Ljava/lang/String;)I
+        24: pop
+        25: aload_0
+        26: invokespecial #11                 // Method gotoBrowser:()V
+        29: aload_0
+        30: invokevirtual #12                 // Method getName:()Ljava/lang/String;
+        33: ifnull        46
+        36: getstatic     #13                 // Field java/lang/System.out:Ljava/io/PrintStream;
+        39: aload_0
+        40: invokevirtual #12                 // Method getName:()Ljava/lang/String;
+        43: invokevirtual #14                 // Method java/io/PrintStream.print:(Ljava/lang/String;)V
+        46: aload_0
+        47: ldc           #15                 // String
+        49: invokestatic  #16                 // Method staticMethod:(Ljava/lang/Object;Ljava/lang/Object;)V
+        52: new           #17                 // class okhttp3/OkHttpClient$Builder
+        55: dup
+        56: invokespecial #18                 // Method okhttp3/OkHttpClient$Builder."<init>":()V
+        59: invokevirtual #19                 // Method okhttp3/OkHttpClient$Builder.build:()Lokhttp3/OkHttpClient;
+        62: new           #20                 // class okhttp3/Request$Builder
+        65: dup
+        66: invokespecial #21                 // Method okhttp3/Request$Builder."<init>":()V
+        69: ldc           #22                 // String http://www.baidu.com
+        71: invokevirtual #23                 // Method okhttp3/Request$Builder.url:(Ljava/lang/String;)Lokhttp3/Request$Builder;
+        74: invokevirtual #24                 // Method okhttp3/Request$Builder.build:()Lokhttp3/Request;
+        77: invokevirtual #25                 // Method okhttp3/OkHttpClient.newCall:(Lokhttp3/Request;)Lokhttp3/Call;
+        80: new           #26                 // class bruce/com/testhibeaver/MainActivity$1
+        83: dup
+        84: aload_0
+        85: invokespecial #27                 // Method bruce/com/testhibeaver/MainActivity$1."<init>":(Lbruce/com/testhibeaver/MainActivity;)V
+        88: invokeinterface #28,  2           // InterfaceMethod okhttp3/Call.enqueue:(Lokhttp3/Callback;)V
+        93: goto          101
+        96: astore_2
+        97: aload_2
+        98: invokevirtual #30                 // Method java/lang/Exception.printStackTrace:()V
+       101: return
+      Exception table:
+         from    to  target type
+            52    93    96   Class java/lang/Exception
+      LineNumberTable:
+        line 22: 0
+        line 23: 5
+        line 24: 11
+        line 25: 17
+        line 26: 25
+        line 27: 29
+        line 28: 36
+        line 30: 46
+        line 32: 52
+        line 33: 59
+        line 35: 71
+        line 36: 74
+        line 34: 77
+        line 36: 88
+        line 48: 93
+        line 46: 96
+        line 47: 97
+        line 49: 101
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           97       4     2     e   Ljava/lang/Exception;
+            0     102     0  this   Lbruce/com/testhibeaver/MainActivity;
+            0     102     1 savedInstanceState   Landroid/os/Bundle;
+      StackMapTable: number_of_entries = 3
+        frame_type = 46 /* same */
+        frame_type = 113 /* same_locals_1_stack_item */
+          stack = [ class java/lang/Exception ]
+        frame_type = 4 /* same */
+
+  public java.lang.String getName();
+    descriptor: ()Ljava/lang/String;
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #37                 // Field name:Ljava/lang/String;
+         4: areturn
+      LineNumberTable:
+        line 58: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lbruce/com/testhibeaver/MainActivity;
+
+  public void setName(java.lang.String);
+    descriptor: (Ljava/lang/String;)V
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: putfield      #37                 // Field name:Ljava/lang/String;
+         5: return
+      LineNumberTable:
+        line 62: 0
+        line 63: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lbruce/com/testhibeaver/MainActivity;
+            0       6     1  name   Ljava/lang/String;
+
+  public static void staticMethod(java.lang.Object, java.lang.Object);
+    descriptor: (Ljava/lang/Object;Ljava/lang/Object;)V
+    flags: ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: ifnull        14
+         4: ldc           #38                 // String staticMethod
+         6: aload_0
+         7: invokevirtual #39                 // Method java/lang/Object.toString:()Ljava/lang/String;
+        10: invokestatic  #10                 // Method android/util/Log.i:(Ljava/lang/String;Ljava/lang/String;)I
+        13: pop
+        14: ldc           #38                 // String staticMethod
+        16: aload_1
+        17: invokevirtual #39                 // Method java/lang/Object.toString:()Ljava/lang/String;
+        20: invokestatic  #10                 // Method android/util/Log.i:(Ljava/lang/String;Ljava/lang/String;)I
+        23: pop
+        24: return
+      LineNumberTable:
+        line 66: 0
+        line 67: 4
+        line 69: 14
+        line 70: 24
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      25     0 checkThisBro   Ljava/lang/Object;
+            0      25     1 andThis   Ljava/lang/Object;
+      StackMapTable: number_of_entries = 1
+        frame_type = 14 /* same */
+}
+SourceFile: "MainActivity.java"
+InnerClasses:
+     #26; //class bruce/com/testhibeaver/MainActivity$1
+     public static final #78= #3 of #76; //layout=class bruce/com/testhibeaver/R$layout of class bruce/com/testhibeaver/R
+     public static final #96= #17 of #94; //Builder=class okhttp3/OkHttpClient$Builder of class okhttp3/OkHttpClient
+     public static #96= #20 of #98; //Builder=class okhttp3/Request$Builder of class okhttp3/Request
