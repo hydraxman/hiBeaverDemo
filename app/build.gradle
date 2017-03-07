@@ -8,7 +8,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.2'
 //        classpath 'com.github.BryanSharp:hibeaver:1.2.1-SNAPSHOT' //this is the jitpack version
-        classpath 'com.bryansharp:hibeaver:1.2.1-SNAPSHOT'//this is the local version
+        classpath 'com.bryansharp:hibeaver:1.2.3-SNAPSHOT'//this is the local version
     }
 }
 
@@ -50,6 +50,7 @@ import com.bryansharp.gradle.hibeaver.utils.MethodLogAdapter
 import org.objectweb.asm.ClassVisitor
 import org.objectweb.asm.MethodVisitor
 import org.objectweb.asm.Opcodes
+
 //or you can import like bellow:
 //import org.objectweb.asm.*
 hiBeaver {
@@ -64,7 +65,7 @@ hiBeaver {
 
     //this is the most important part
     modifyMatchMaps = [
-            'com.xiaomi.mipush.sdk.u': [
+            'com.xiaomi.mipush.sdk.u'         : [
                     // you can use javap -s command to get the description of one method
                     ['methodName': 'a', 'methodDesc': '(Lorg/apache/thrift/a;Lcom/xiaomi/xmpush/thrift/a;ZLcom/xiaomi/xmpush/thrift/r;)V', 'adapter': {
                         ClassVisitor cv, int access, String name, String desc, String signature, String[] exceptions ->
@@ -97,5 +98,43 @@ hiBeaver {
                             return adapter;
                     }]
             ],
+            '*Activity'                       : [
+                    'classMatchType': 'wildcard',
+                    'modifyMethods' : [
+                            ['methodName': 'on**', 'methodMatchType': 'wildcard', 'methodDesc': null, 'adapter': {
+                                ClassVisitor cv, int access, String name, String desc, String signature, String[] exceptions ->
+                                    MethodVisitor methodVisitor = cv.visitMethod(access, name, desc, signature, exceptions);
+                                    MethodVisitor adapter = new MethodLogAdapter(methodVisitor) {
+                                        @Override
+                                        void visitCode() {
+                                            super.visitCode();
+                                            methodVisitor.visitLdcInsn(desc);
+                                            methodVisitor.visitLdcInsn(name);
+                                            methodVisitor.visitMethodInsn(Opcodes.INVOKESTATIC, "bruce/com/testhibeaver/MainActivity", "hookXM", "(Ljava/lang/Object;Ljava/lang/Object;)V");
+                                        }
+                                    }
+                                    return adapter;
+                            }]
+                    ]
+            ],
+            '.*D[a-zA-Z]*Receiver'                       : [
+                    'classMatchType': 'regEx',
+                    'modifyMethods' : [
+                            ['methodName': 'on**', 'methodMatchType': 'wildcard', 'methodDesc': null, 'adapter': {
+                                ClassVisitor cv, int access, String name, String desc, String signature, String[] exceptions ->
+                                    MethodVisitor methodVisitor = cv.visitMethod(access, name, desc, signature, exceptions);
+                                    MethodVisitor adapter = new MethodLogAdapter(methodVisitor) {
+                                        @Override
+                                        void visitCode() {
+                                            super.visitCode();
+                                            methodVisitor.visitLdcInsn(desc);
+                                            methodVisitor.visitLdcInsn(name);
+                                            methodVisitor.visitMethodInsn(Opcodes.INVOKESTATIC, "bruce/com/testhibeaver/MainActivity", "hookXM", "(Ljava/lang/Object;Ljava/lang/Object;)V");
+                                        }
+                                    }
+                                    return adapter;
+                            }]
+                    ]
+            ]
     ]
 }

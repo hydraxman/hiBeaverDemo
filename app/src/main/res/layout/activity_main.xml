@@ -12,7 +12,9 @@
     tools:context="bruce.com.testhibeaver.MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/hello"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"/>
+        android:text="Hello World!"
+        android:textAlignment="center"/>
 </RelativeLayout>

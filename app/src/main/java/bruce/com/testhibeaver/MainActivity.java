@@ -3,6 +3,7 @@ package bruce.com.testhibeaver;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.xiaomi.mipush.sdk.MiPushClient;
 
@@ -22,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        TextView hello = (TextView) findViewById(R.id.hello);
         MiPushClient.registerPush(this, APP_ID, APP_KEY);
-        Log.i("hi", "hi");
         Log.i("hi", "hi");
         try {
             new OkHttpClient.Builder()
@@ -44,6 +45,16 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
     }
 
     public static void hookXM(Object checkThisBro, Object andThis) {
