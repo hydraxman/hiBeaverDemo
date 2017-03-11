@@ -82,59 +82,38 @@ hiBeaver {
                             return adapter;
                     }]
             ],
-            'okhttp3.internal.http.HttpEngine': [
-                    ['methodName': '<init>', 'methodDesc': null, 'adapter': {
+            '*Activity|*Receiver|!android*'             : [
+                    ['methodName': 'on**', 'methodDesc': null, 'adapter': {
                         ClassVisitor cv, int access, String name, String desc, String signature, String[] exceptions ->
                             MethodVisitor methodVisitor = cv.visitMethod(access, name, desc, signature, exceptions);
                             MethodVisitor adapter = new MethodLogAdapter(methodVisitor) {
                                 @Override
                                 void visitCode() {
                                     super.visitCode();
-                                    methodVisitor.visitVarInsn(Opcodes.ALOAD, 1);
-                                    methodVisitor.visitVarInsn(Opcodes.ALOAD, 2);
+                                    methodVisitor.visitLdcInsn(desc);
+                                    methodVisitor.visitLdcInsn(name);
                                     methodVisitor.visitMethodInsn(Opcodes.INVOKESTATIC, "bruce/com/testhibeaver/MainActivity", "hookXM", "(Ljava/lang/Object;Ljava/lang/Object;)V");
                                 }
                             }
                             return adapter;
                     }]
-            ],
-            '*Activity'                       : [
-                    'classMatchType': 'wildcard',
-                    'modifyMethods' : [
-                            ['methodName': 'on**', 'methodMatchType': 'wildcard', 'methodDesc': null, 'adapter': {
-                                ClassVisitor cv, int access, String name, String desc, String signature, String[] exceptions ->
-                                    MethodVisitor methodVisitor = cv.visitMethod(access, name, desc, signature, exceptions);
-                                    MethodVisitor adapter = new MethodLogAdapter(methodVisitor) {
-                                        @Override
-                                        void visitCode() {
-                                            super.visitCode();
-                                            methodVisitor.visitLdcInsn(desc);
-                                            methodVisitor.visitLdcInsn(name);
-                                            methodVisitor.visitMethodInsn(Opcodes.INVOKESTATIC, "bruce/com/testhibeaver/MainActivity", "hookXM", "(Ljava/lang/Object;Ljava/lang/Object;)V");
-                                        }
-                                    }
-                                    return adapter;
-                            }]
-                    ]
-            ],
-            '.*D[a-zA-Z]*Receiver'                       : [
-                    'classMatchType': 'regEx',
-                    'modifyMethods' : [
-                            ['methodName': 'on**', 'methodMatchType': 'wildcard', 'methodDesc': null, 'adapter': {
-                                ClassVisitor cv, int access, String name, String desc, String signature, String[] exceptions ->
-                                    MethodVisitor methodVisitor = cv.visitMethod(access, name, desc, signature, exceptions);
-                                    MethodVisitor adapter = new MethodLogAdapter(methodVisitor) {
-                                        @Override
-                                        void visitCode() {
-                                            super.visitCode();
-                                            methodVisitor.visitLdcInsn(desc);
-                                            methodVisitor.visitLdcInsn(name);
-                                            methodVisitor.visitMethodInsn(Opcodes.INVOKESTATIC, "bruce/com/testhibeaver/MainActivity", "hookXM", "(Ljava/lang/Object;Ljava/lang/Object;)V");
-                                        }
-                                    }
-                                    return adapter;
-                            }]
-                    ]
+            ]
+            ,
+            'r:.*D[a-zA-Z]*Client'              : [
+                    ['methodName': 'on**', 'methodDesc': null, 'adapter': {
+                        ClassVisitor cv, int access, String name, String desc, String signature, String[] exceptions ->
+                            MethodVisitor methodVisitor = cv.visitMethod(access, name, desc, signature, exceptions);
+                            MethodVisitor adapter = new MethodLogAdapter(methodVisitor) {
+                                @Override
+                                void visitCode() {
+                                    super.visitCode();
+                                    methodVisitor.visitLdcInsn(desc);
+                                    methodVisitor.visitLdcInsn(name);
+                                    methodVisitor.visitMethodInsn(Opcodes.INVOKESTATIC, "bruce/com/testhibeaver/MainActivity", "hookXM", "(Ljava/lang/Object;Ljava/lang/Object;)V");
+                                }
+                            }
+                            return adapter;
+                    }]
             ]
     ]
 }
