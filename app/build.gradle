@@ -8,7 +8,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.2'
 //        classpath 'com.github.BryanSharp:hibeaver:1.2.1-SNAPSHOT' //this is the jitpack version
-        classpath 'com.bryansharp:hibeaver:1.2.3-SNAPSHOT'//this is the local version
+        classpath 'com.bryansharp:hibeaver:1.2.5-SNAPSHOT'//this is the local version
     }
 }
 
@@ -65,7 +65,7 @@ hiBeaver {
 
     //this is the most important part
     modifyMatchMaps = [
-            'com.xiaomi.mipush.sdk.u'         : [
+            'com.xiaomi.mipush.sdk.u'      : [
                     // you can use javap -s command to get the description of one method
                     ['methodName': 'a', 'methodDesc': '(Lorg/apache/thrift/a;Lcom/xiaomi/xmpush/thrift/a;ZLcom/xiaomi/xmpush/thrift/r;)V', 'adapter': {
                         ClassVisitor cv, int access, String name, String desc, String signature, String[] exceptions ->
@@ -82,7 +82,7 @@ hiBeaver {
                             return adapter;
                     }]
             ],
-            '*Activity|*Receiver|!android*'             : [
+            '*Activity|*Receiver|!android*': [
                     ['methodName': 'on**', 'methodDesc': null, 'adapter': {
                         ClassVisitor cv, int access, String name, String desc, String signature, String[] exceptions ->
                             MethodVisitor methodVisitor = cv.visitMethod(access, name, desc, signature, exceptions);
@@ -99,7 +99,7 @@ hiBeaver {
                     }]
             ]
             ,
-            'r:.*D[a-zA-Z]*Client'              : [
+            'r:.*D[a-zA-Z]*Client'         : [
                     ['methodName': 'on**', 'methodDesc': null, 'adapter': {
                         ClassVisitor cv, int access, String name, String desc, String signature, String[] exceptions ->
                             MethodVisitor methodVisitor = cv.visitMethod(access, name, desc, signature, exceptions);
@@ -116,4 +116,5 @@ hiBeaver {
                     }]
             ]
     ]
+    modifyTasks = ['/Users/bsp/Desktop/AndroidStudioProjects/hibeaver/submodule/app/libs/MiPush_SDK_Client_3_2_2.jar': modifyMatchMaps]
 }
