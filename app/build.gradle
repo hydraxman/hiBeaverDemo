@@ -116,5 +116,5 @@ hiBeaver {
                     }]
             ]
     ]
-    modifyTasks = ['/Users/bsp/Desktop/AndroidStudioProjects/hibeaver/submodule/app/libs/MiPush_SDK_Client_3_2_2.jar': modifyMatchMaps]
+    modifyTasks = ["${rootDir.absolutePath}/submodule/app/libs/MiPush_SDK_Client_3_2_2.jar": modifyMatchMaps]
 }
